@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32510.428
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookinist", "Bookinist\Bookinist.csproj", "{29BFD7C9-826B-4271-845A-EA4671FAB4EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29BFD7C9-826B-4271-845A-EA4671FAB4EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29BFD7C9-826B-4271-845A-EA4671FAB4EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29BFD7C9-826B-4271-845A-EA4671FAB4EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29BFD7C9-826B-4271-845A-EA4671FAB4EA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2B31BB38-B1A3-4E40-9496-66C9AD41ECBD}
+	EndGlobalSection
+EndGlobal
