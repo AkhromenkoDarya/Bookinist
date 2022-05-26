@@ -1,9 +1,16 @@
 ﻿<Application x:Class="Bookinist.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Bookinist"
-             StartupUri="MainWindow.xaml">
+             xmlns:locator="clr-namespace:Bookinist.ViewModels.Locator"
+             StartupUri="Views/Windows/MainWindow.xaml">
     <Application.Resources>
-         
+         <ResourceDictionary>
+             <ResourceDictionary.MergedDictionaries>
+                 <ResourceDictionary Source="Infrastructure/Commands/Commands.xaml"/>
+                 <ResourceDictionary Source="Resources/Base/Brushes.xaml"/>
+             </ResourceDictionary.MergedDictionaries>
+
+             <locator:ViewModelLocator x:Key="Locator"/>
+         </ResourceDictionary>
     </Application.Resources>
 </Application>
