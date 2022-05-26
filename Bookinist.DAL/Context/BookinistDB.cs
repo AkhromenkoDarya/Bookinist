@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Bookinist.DAL.Context
 {
-    internal class BookinistDB : DbContext
+    public class BookinistDb : DbContext
     {
         public DbSet<Book> Books { get; set; }
 
@@ -15,7 +15,7 @@ namespace Bookinist.DAL.Context
 
         public DbSet<Deal> Deals { get; set; }
 
-        public BookinistDB(DbContextOptions<BookinistDB> options) : base(options)
+        public BookinistDb(DbContextOptions<BookinistDb> options) : base(options)
         {
             
         }
