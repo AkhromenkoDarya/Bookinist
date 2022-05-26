@@ -20,11 +20,12 @@ namespace Bookinist
 
         public static IHost Host => _host ??= Microsoft.Extensions.Hosting.Host
            .CreateDefaultBuilder(Environment.GetCommandLineArgs())
-           .ConfigureAppConfiguration(cfg => cfg.AddJsonFile("appsettings.json", true, true))
-           .ConfigureServices((host, services) => services
+           .ConfigureServices((hostContext, services) => services
+               .AddDatabase(hostContext.Configuration.GetSection("Database"))
                .AddViewModels()
                .AddServices())
-           .Build();
+           .Build()
+        ;
 
         public static IServiceProvider Services => Host.Services;
 
@@ -37,8 +38,8 @@ namespace Bookinist
 
         protected override async void OnExit(ExitEventArgs e)
         {
-            base.OnExit(e);
             using IHost host = Host;
+            base.OnExit(e);
             await host.StopAsync();
         }
     }
