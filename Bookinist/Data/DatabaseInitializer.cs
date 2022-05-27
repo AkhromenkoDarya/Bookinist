@@ -168,10 +168,7 @@ namespace Bookinist.Data
             IEnumerable<Deal> deals = Enumerable.Range(1, DealCount)
                 .Select(i => new Deal
                 {
-                    Books = new List<Book>
-                    {
-                        random.NextItem(_books)
-                    },
+                    Book = random.NextItem(_books),
                     Seller = random.NextItem(_sellers),
                     Buyer = random.NextItem(_buyers),
                     Price = (decimal)(random.NextDouble() * 4000 + 700)
