@@ -10,4 +10,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.9" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Bookinist.Interfaces\Bookinist.Interfaces.csproj" />
+  </ItemGroup>
+
 </Project>
