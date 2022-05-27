@@ -42,7 +42,7 @@ namespace Bookinist.DAL.Migrations
 
                     b.HasIndex("DealId");
 
-                    b.ToTable("Books");
+                    b.ToTable("Book");
                 });
 
             modelBuilder.Entity("Bookinist.DAL.Entities.Buyer", b =>
@@ -133,11 +133,11 @@ namespace Bookinist.DAL.Migrations
             modelBuilder.Entity("Bookinist.DAL.Entities.Book", b =>
                 {
                     b.HasOne("Bookinist.DAL.Entities.Category", "Category")
-                        .WithMany("Books")
+                        .WithMany("Book")
                         .HasForeignKey("CategoryId");
 
                     b.HasOne("Bookinist.DAL.Entities.Deal", null)
-                        .WithMany("Books")
+                        .WithMany("Book")
                         .HasForeignKey("DealId");
                 });
 

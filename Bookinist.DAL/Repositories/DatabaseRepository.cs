@@ -7,7 +7,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Bookinist.DAL.Repository
+namespace Bookinist.DAL.Repositories
 {
     internal class DatabaseRepository<T> : IRepository<T> where T : Entity, new()
     {

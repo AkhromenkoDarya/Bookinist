@@ -1,4 +1,5 @@
 ﻿using Bookinist.DAL.Context;
+using Bookinist.DAL.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -38,6 +39,7 @@ namespace Bookinist.Data
                         }
                     })
                     .AddTransient<DatabaseInitializer>()
+                    .AddRepositoriesInDatabase()
         ;
     }
 }

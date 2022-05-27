@@ -77,7 +77,7 @@ namespace Bookinist.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Books",
+                name: "Book",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -105,12 +105,12 @@ namespace Bookinist.DAL.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_Books_CategoryId",
-                table: "Books",
+                table: "Book",
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Books_DealId",
-                table: "Books",
+                table: "Book",
                 column: "DealId");
 
             migrationBuilder.CreateIndex(
@@ -127,7 +127,7 @@ namespace Bookinist.DAL.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Books");
+                name: "Book");
 
             migrationBuilder.DropTable(
                 name: "Categories");
