@@ -9,9 +9,11 @@
                  <ResourceDictionary Source="Infrastructure/Commands/Commands.xaml"/>
                  <ResourceDictionary Source="Resources/Styles/Base/Brushes.xaml"/>
                  <ResourceDictionary Source="Resources/Styles/Main.xaml"/>
-             </ResourceDictionary.MergedDictionaries>
+                 <ResourceDictionary Source="Views/../Resources/Templates/BasicViews.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
 
              <locator:ViewModelLocator x:Key="Locator"/>
+
          </ResourceDictionary>
     </Application.Resources>
 </Application>

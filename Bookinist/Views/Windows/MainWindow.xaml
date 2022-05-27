@@ -12,15 +12,22 @@
         Width="800" Height="450">
     <DockPanel>
         <Menu IsMainMenu="True">
-            <MenuItem Header="Buyers"/>
-            <MenuItem Header="Books"/>
-            <MenuItem Header="Statistics"/>
+            <MenuItem Header="Buyers" Command="{Binding ShowBuyerViewCommand}"/>
+            <MenuItem Header="Books" Command="{Binding ShowBookViewCommand}"/>
+            <MenuItem Header="Statistics" Command="{Binding ShowStatisticsViewCommand}"/>
         </Menu>
         <StatusBar>
             <StatusBarItem Content="{Binding Status}"/>
         </StatusBar>
         <Grid>
-
+            <!--<Grid.Resources>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="../../Resources/Templates/BasicViews.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </Grid.Resources>-->
+            <ContentControl Content="{Binding CurrentChildViewModel}"/>
         </Grid>
     </DockPanel>
 </Window>

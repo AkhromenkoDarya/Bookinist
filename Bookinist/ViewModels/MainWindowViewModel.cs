@@ -134,30 +134,30 @@ namespace Bookinist.ViewModels
 
         #endregion
 
-        #region Command ShowStatisticViewCommand - Команда отображения представления статистики
+        #region Command ShowStatisticsViewCommand - Команда отображения представления статистики
 
         /// <summary>
         /// Команда отображения представления статистики.
         /// </summary>
-        private ICommand _showStatisticViewCommand;
+        private ICommand _showStatisticsViewCommand;
 
         /// <summary>
         /// Команда отображения представления статистики.
         /// </summary>
-        public ICommand ShowStatisticViewCommand => _showStatisticViewCommand ??=
-            new RelayCommand(OnShowStatisticViewCommandExecuted, CanShowStatisticViewCommandExecute);
+        public ICommand ShowStatisticsViewCommand => _showStatisticsViewCommand ??=
+            new RelayCommand(OnShowStatisticsViewCommandExecuted, CanShowStatisticsViewCommandExecute);
 
         /// <summary>
         /// Проверка возможности выполнения - Команда отображения представления статистики.
         /// </summary>
-        private bool CanShowStatisticViewCommandExecute(object p) => true;
+        private bool CanShowStatisticsViewCommandExecute(object p) => true;
 
         /// <summary>
         /// Логика выполнения - Команда отображения представления статистики.
         /// </summary>
-        private void OnShowStatisticViewCommandExecuted(object p)
+        private void OnShowStatisticsViewCommandExecuted(object p)
         {
-            CurrentChildViewModel = new StatisticViewModel(_books, _buyers, _sellers);
+            CurrentChildViewModel = new StatisticsViewModel(_books, _buyers, _sellers);
         }
 
         #endregion
@@ -167,7 +167,7 @@ namespace Bookinist.ViewModels
         [Obsolete]
         public MainWindowViewModel()
         {
-
+            
         }
 
         public MainWindowViewModel(IRepository<Book> books, IRepository<Seller> sellers, 

@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:Bookinist.ViewModels"
+                    xmlns:uc="clr-namespace:Bookinist.Views.UserControls">
+    
+    <DataTemplate DataType="{x:Type vm:BookViewModel}">
+        <uc:BookView DataContext="{Binding}"/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:BuyerViewModel}">
+        <uc:BuyerView DataContext="{Binding}"/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:StatisticsViewModel}">
+        <uc:StatisticsView DataContext="{Binding}"/>
+    </DataTemplate>
+
+</ResourceDictionary>
