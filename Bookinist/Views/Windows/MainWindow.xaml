@@ -14,7 +14,7 @@
         <Menu IsMainMenu="True">
             <MenuItem Header="Buyers"/>
             <MenuItem Header="Books"/>
-            <MenuItem Header="Sellers"/>
+            <MenuItem Header="Statistics"/>
         </Menu>
         <StatusBar>
             <StatusBarItem Content="{Binding Status}"/>
