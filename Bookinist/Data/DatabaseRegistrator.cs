@@ -13,7 +13,7 @@ namespace Bookinist.Data
                 services
                     .AddDbContext<BookinistDb>(options =>
                     {
-                        string type = configuration["Type"];
+                        string type = configuration["Type"];              
 
                         switch (type)
                         {

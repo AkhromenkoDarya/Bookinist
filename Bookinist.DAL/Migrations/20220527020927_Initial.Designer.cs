@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bookinist.DAL.Migrations
 {
     [DbContext(typeof(BookinistDb))]
-    [Migration("20220526142145_Initial")]
+    [Migration("20220527020927_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
