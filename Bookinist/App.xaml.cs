@@ -1,11 +1,11 @@
 ﻿using Bookinist.Data;
 using Bookinist.Services.Registration;
 using Bookinist.ViewModels.Registration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Linq;
 using System.Windows;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Bookinist
 {
@@ -40,8 +40,7 @@ namespace Bookinist
 
             using (IServiceScope scope = Services.CreateScope())
             {
-                scope.ServiceProvider.GetRequiredService<DatabaseInitializer>().InitializeAsync()
-                    .Wait();
+                await scope.ServiceProvider.GetRequiredService<DatabaseInitializer>().InitializeAsync();
             }
 
             base.OnStartup(e);

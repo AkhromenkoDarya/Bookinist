@@ -28,14 +28,14 @@ namespace Bookinist.Data
             _logger.LogInformation("Initializing a database...");
 
             _logger.LogInformation("Deleting an existing database...");
-            await _database.Database.EnsureDeletedAsync()/*.ConfigureAwait(false)*/;
+            await _database.Database.EnsureDeletedAsync().ConfigureAwait(false);
             _logger.LogInformation("Deleting an existing database completed successfully in " +
                                    $"{timer.ElapsedMilliseconds} ms");
 
             //_database.Database.EnsureCreated();
 
             _logger.LogInformation("Database migration...");
-            await _database.Database.MigrateAsync();
+            await _database.Database.MigrateAsync().ConfigureAwait(false);
             _logger.LogInformation("Database migration completed successfully in " +
                                    $"{timer.ElapsedMilliseconds} ms");
 
