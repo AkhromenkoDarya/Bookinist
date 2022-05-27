@@ -4,7 +4,7 @@ using Bookinist.ViewModels.Base;
 
 namespace Bookinist.ViewModels
 {
-    internal class StatisticViewModel : ViewModel
+    internal class StatisticsViewModel : ViewModel
     {
         private readonly IRepository<Book> _bookRepository;
 
@@ -12,7 +12,7 @@ namespace Bookinist.ViewModels
 
         private readonly IRepository<Seller> _sellerRepository;
 
-        public StatisticViewModel(IRepository<Book> bookRepository, 
+        public StatisticsViewModel(IRepository<Book> bookRepository, 
             IRepository<Buyer> buyerRepository, IRepository<Seller> sellerRepository)
         {
             _bookRepository = bookRepository;
