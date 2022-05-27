@@ -1,13 +1,22 @@
-﻿using System.Linq;
-using Bookinist.DAL.Entities;
+﻿using Bookinist.DAL.Entities;
+using Bookinist.Infrastructure.Commands;
 using Bookinist.Interfaces;
+using Bookinist.Services.Interfaces;
 using Bookinist.ViewModels.Base;
+using System;
+using System.Windows.Input;
 
 namespace Bookinist.ViewModels
 {
     internal class MainWindowViewModel : ViewModel
     {
-        private readonly IRepository<Book> _bookRepository;
+        private readonly IRepository<Book> _books;
+
+        private readonly IRepository<Seller> _sellers;
+
+        private readonly IRepository<Buyer> _buyers;
+
+        private readonly ISaleService _saleService;
 
         #region Title : string - Заголовок окна
 
@@ -47,11 +56,141 @@ namespace Bookinist.ViewModels
 
         #endregion
 
-        public MainWindowViewModel(IRepository<Book> bookRepository)
-        {
-            _bookRepository = bookRepository;
+        #region CurrentChildViewModel : ViewModel - Текущая дочерняя модель представления
 
-            Book[] books = bookRepository.Items.Take(10).ToArray();
+        /// <summary>
+        /// Текущая дочерняя модель представления.
+        /// </summary>
+        private ViewModel _currentChildViewModel;
+
+        /// <summary>
+        /// Текущая дочерняя модель представления.
+        /// </summary>
+        public ViewModel CurrentChildViewModel
+    
+        {
+            get => _currentChildViewModel;
+
+            private set => Set(ref _currentChildViewModel, value);
         }
+
+        #endregion
+
+        #region Команды
+
+        #region Command ShowBookViewCommand - Команда отображения представления книг
+
+        /// <summary>
+        /// Команда отображения представления книг.
+        /// </summary>
+        private ICommand _showBookViewCommand;
+
+        /// <summary>
+        /// Команда отображения представления книг.
+        /// </summary>
+        public ICommand ShowBookViewCommand => _showBookViewCommand ??=
+            new RelayCommand(OnShowBookViewCommandExecuted, CanShowBookViewCommandExecute);
+
+        /// <summary>
+        /// Проверка возможности выполнения - Команда отображения представления книг.
+        /// </summary>
+        private bool CanShowBookViewCommandExecute(object p) => true;
+
+        /// <summary>
+        /// Логика выполнения - Команда отображения представления книг.
+        /// </summary>
+        private void OnShowBookViewCommandExecuted(object p)
+        {
+            CurrentChildViewModel = new BookViewModel(_books);
+        }
+
+        #endregion
+
+        #region Command ShowBuyerViewCommand - Команда отображения представления покупателей
+
+        /// <summary>
+        /// Команда отображения представления покупателей.
+        /// </summary>
+        private ICommand _showBuyerViewCommand;
+
+        /// <summary>
+        /// Команда отображения представления покупателей.
+        /// </summary>
+        public ICommand ShowBuyerViewCommand => _showBuyerViewCommand ??=
+            new RelayCommand(OnShowBuyerViewCommandExecuted, CanShowBuyerViewCommandExecute);
+
+        /// <summary>
+        /// Проверка возможности выполнения - Команда отображения представления покупателей.
+        /// </summary>
+        private bool CanShowBuyerViewCommandExecute(object p) => true;
+
+        /// <summary>
+        /// Логика выполнения - Команда отображения представления покупателей.
+        /// </summary>
+        private void OnShowBuyerViewCommandExecuted(object p)
+        {
+            CurrentChildViewModel = new BuyerViewModel(_buyers);
+        }
+
+        #endregion
+
+        #region Command ShowStatisticViewCommand - Команда отображения представления статистики
+
+        /// <summary>
+        /// Команда отображения представления статистики.
+        /// </summary>
+        private ICommand _showStatisticViewCommand;
+
+        /// <summary>
+        /// Команда отображения представления статистики.
+        /// </summary>
+        public ICommand ShowStatisticViewCommand => _showStatisticViewCommand ??=
+            new RelayCommand(OnShowStatisticViewCommandExecuted, CanShowStatisticViewCommandExecute);
+
+        /// <summary>
+        /// Проверка возможности выполнения - Команда отображения представления статистики.
+        /// </summary>
+        private bool CanShowStatisticViewCommandExecute(object p) => true;
+
+        /// <summary>
+        /// Логика выполнения - Команда отображения представления статистики.
+        /// </summary>
+        private void OnShowStatisticViewCommandExecuted(object p)
+        {
+            CurrentChildViewModel = new StatisticViewModel(_books, _buyers, _sellers);
+        }
+
+        #endregion
+
+        #endregion
+
+        [Obsolete]
+        public MainWindowViewModel()
+        {
+
+        }
+
+        public MainWindowViewModel(IRepository<Book> books, IRepository<Seller> sellers, 
+            IRepository<Buyer> buyers, ISaleService saleService)
+        {
+            _books = books;
+            _sellers = sellers;
+            _buyers = buyers;
+            _saleService = saleService;
+
+        }
+
+        //private async void Test()
+        //{
+        //    int dealCountBeforeAddingNew = _saleService.Deals.Count();
+
+        //    Book book = await _books.GetAsync(5);
+        //    Seller seller = await _sellers.GetAsync(3);
+        //    Buyer buyer = await _buyers.GetAsync(7);
+
+        //    Task<Deal> deal = _saleService.MakeDeal(book.Name, seller, buyer, 100m);
+
+        //    int dealCountAfterAddingNew = _saleService.Deals.Count();
+        //}
     }
 }

@@ -29,9 +29,6 @@ namespace Bookinist.DAL.Migrations
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DealId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -40,9 +37,7 @@ namespace Bookinist.DAL.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("DealId");
-
-                    b.ToTable("Book");
+                    b.ToTable("Books");
                 });
 
             modelBuilder.Entity("Bookinist.DAL.Entities.Buyer", b =>
@@ -90,6 +85,9 @@ namespace Bookinist.DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("BookId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("BuyerId")
                         .HasColumnType("int");
 
@@ -100,6 +98,8 @@ namespace Bookinist.DAL.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BookId");
 
                     b.HasIndex("BuyerId");
 
@@ -133,16 +133,16 @@ namespace Bookinist.DAL.Migrations
             modelBuilder.Entity("Bookinist.DAL.Entities.Book", b =>
                 {
                     b.HasOne("Bookinist.DAL.Entities.Category", "Category")
-                        .WithMany("Book")
+                        .WithMany("Books")
                         .HasForeignKey("CategoryId");
-
-                    b.HasOne("Bookinist.DAL.Entities.Deal", null)
-                        .WithMany("Book")
-                        .HasForeignKey("DealId");
                 });
 
             modelBuilder.Entity("Bookinist.DAL.Entities.Deal", b =>
                 {
+                    b.HasOne("Bookinist.DAL.Entities.Book", "Book")
+                        .WithMany()
+                        .HasForeignKey("BookId");
+
                     b.HasOne("Bookinist.DAL.Entities.Buyer", "Buyer")
                         .WithMany()
                         .HasForeignKey("BuyerId");
