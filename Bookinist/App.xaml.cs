@@ -5,6 +5,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Linq;
 using System.Windows;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Bookinist
 {
@@ -36,6 +37,13 @@ namespace Bookinist
         protected override async void OnStartup(StartupEventArgs e)
         {
             IHost host = Host;
+
+            using (IServiceScope scope = Services.CreateScope())
+            {
+                scope.ServiceProvider.GetRequiredService<DatabaseInitializer>().InitializeAsync()
+                    .Wait();
+            }
+
             base.OnStartup(e);
             await host.StartAsync();
         }

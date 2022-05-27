@@ -37,6 +37,7 @@ namespace Bookinist.Data
 
                         }
                     })
+                    .AddTransient<DatabaseInitializer>()
         ;
     }
 }
