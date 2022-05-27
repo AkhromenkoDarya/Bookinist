@@ -13,5 +13,8 @@ namespace Bookinist.DAL.Entities
         public virtual Seller Seller { get; set; }
 
         public virtual Buyer Buyer { get; set; }
+
+        public override string ToString() => $"The deal for the book {Book} sale between {Seller} " +
+                                             $"and {Buyer} at a price of {Price:C}";
     }
 }
