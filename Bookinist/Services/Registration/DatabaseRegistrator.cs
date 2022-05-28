@@ -1,11 +1,12 @@
 ﻿using Bookinist.DAL.Context;
-using Bookinist.DAL.Repositories;
+using Bookinist.DAL.Repositories.Services.Registration;
+using Bookinist.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace Bookinist.Data
+namespace Bookinist.Services.Registration
 {
     internal static class DatabaseRegistrator
     {

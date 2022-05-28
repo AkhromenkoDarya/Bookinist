@@ -8,11 +8,11 @@ namespace Bookinist.DAL.Entities
         [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
 
-        public virtual Book Book { get; set; }
+        public Book Book { get; set; }
 
-        public virtual Seller Seller { get; set; }
+        public Seller Seller { get; set; }
 
-        public virtual Buyer Buyer { get; set; }
+        public Buyer Buyer { get; set; }
 
         public override string ToString() => $"The deal for the book {Book} sale between {Seller} " +
                                              $"and {Buyer} at a price of {Price:C}";

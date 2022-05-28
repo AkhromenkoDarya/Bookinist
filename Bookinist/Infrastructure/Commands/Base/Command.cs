@@ -16,7 +16,6 @@ namespace Bookinist.Infrastructure.Commands.Base
                 if (_executable == value)
                 {
                     return;
-
                 }
 
                 _executable = value;

@@ -6,6 +6,7 @@ namespace Bookinist.Infrastructure.Commands
     internal class RelayCommandAsync : Command
     {
         private readonly ActionAsync<object> _execute;
+        
         private readonly Func<object, bool> _canExecute;
 
         public RelayCommandAsync(ActionAsync execute, Func<bool> canExecute = null)

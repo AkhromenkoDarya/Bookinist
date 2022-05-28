@@ -1,4 +1,5 @@
-﻿using Bookinist.DAL.Entities;
+﻿using Bookinist.DAL.Context;
+using Bookinist.DAL.Entities;
 using Bookinist.Infrastructure.Commands;
 using Bookinist.Interfaces;
 using Bookinist.Services.Interfaces;
@@ -15,6 +16,8 @@ namespace Bookinist.ViewModels
         private readonly IRepository<Seller> _sellers;
 
         private readonly IRepository<Buyer> _buyers;
+
+        private readonly IRepository<Deal> _deals;
 
         private readonly ISaleService _saleService;
 
@@ -76,7 +79,7 @@ namespace Bookinist.ViewModels
 
         #endregion
 
-        #region Команды
+        #region Commands
 
         #region Command ShowBookViewCommand - Команда отображения представления книг
 
@@ -157,7 +160,7 @@ namespace Bookinist.ViewModels
         /// </summary>
         private void OnShowStatisticsViewCommandExecuted(object p)
         {
-            CurrentChildViewModel = new StatisticsViewModel(_books, _buyers, _sellers);
+            CurrentChildViewModel = new StatisticsViewModel(_books, _buyers, _sellers, _deals);
         }
 
         #endregion
@@ -171,26 +174,13 @@ namespace Bookinist.ViewModels
         }
 
         public MainWindowViewModel(IRepository<Book> books, IRepository<Seller> sellers, 
-            IRepository<Buyer> buyers, ISaleService saleService)
+            IRepository<Buyer> buyers, IRepository<Deal> deals, ISaleService saleService)
         {
             _books = books;
             _sellers = sellers;
             _buyers = buyers;
+            _deals = deals;
             _saleService = saleService;
-
         }
-
-        //private async void Test()
-        //{
-        //    int dealCountBeforeAddingNew = _saleService.Deals.Count();
-
-        //    Book book = await _books.GetAsync(5);
-        //    Seller seller = await _sellers.GetAsync(3);
-        //    Buyer buyer = await _buyers.GetAsync(7);
-
-        //    Task<Deal> deal = _saleService.MakeDeal(book.Name, seller, buyer, 100m);
-
-        //    int dealCountAfterAddingNew = _saleService.Deals.Count();
-        //}
     }
 }

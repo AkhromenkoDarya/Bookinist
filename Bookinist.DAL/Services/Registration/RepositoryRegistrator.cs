@@ -3,7 +3,7 @@ using Bookinist.DAL.Repositories.RelatedEntityRepositories;
 using Bookinist.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Bookinist.DAL.Repositories
+namespace Bookinist.DAL.Repositories.Services.Registration
 {
     public static class RepositoryRegistrator
     {

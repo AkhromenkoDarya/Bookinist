@@ -27,10 +27,10 @@ namespace Bookinist.Data
             var timer = Stopwatch.StartNew();
             _logger.LogInformation("Initializing a database...");
 
-            _logger.LogInformation("Deleting an existing database...");
-            await _database.Database.EnsureDeletedAsync().ConfigureAwait(false);
-            _logger.LogInformation("Deleting an existing database completed successfully in " +
-                                   $"{timer.ElapsedMilliseconds} ms");
+            //_logger.LogInformation("Deleting an existing database...");
+            //await _database.Database.EnsureDeletedAsync().ConfigureAwait(false);
+            //_logger.LogInformation("Deleting an existing database completed successfully in " +
+            //                       $"{timer.ElapsedMilliseconds} ms");
 
             //_database.Database.EnsureCreated();
 
@@ -39,7 +39,7 @@ namespace Bookinist.Data
             _logger.LogInformation("Database migration completed successfully in " +
                                    $"{timer.ElapsedMilliseconds} ms");
 
-            if (await EntityFrameworkQueryableExtensions.AnyAsync(_database.Books))
+            if (await _database.Books.AnyAsync())
             {
                 return;
             }
