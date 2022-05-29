@@ -10,8 +10,8 @@ namespace Bookinist.Infrastructure.Commands
         private readonly Func<object, bool> _canExecute;
 
         public RelayCommandAsync(ActionAsync execute, Func<bool> canExecute = null)
-            : this(async p => await execute(), canExecute is null ? (Func<object, bool>)null :
-                p => canExecute())
+            : this(async p => await execute(), canExecute is null ? 
+                (Func<object, bool>)null : p => canExecute())
         {
 
         }
@@ -22,8 +22,9 @@ namespace Bookinist.Infrastructure.Commands
             _canExecute = canExecute;
         }
 
-        protected override bool CanExecute(object p) => _canExecute?.Invoke(p) ?? true;
+        protected override bool CanExecute(object parameter) => _canExecute?.Invoke(parameter) ?? 
+                                                                true;
 
-        protected override void Execute(object p) => _execute(p);
+        protected override void Execute(object parameter) => _execute(parameter);
     }
 }

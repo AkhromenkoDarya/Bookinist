@@ -44,8 +44,8 @@ namespace Bookinist.Infrastructure.Commands.Base
             Execute(parameter);
         }
 
-        protected virtual bool CanExecute(object p) => true;
+        protected virtual bool CanExecute(object parameter) => true;
 
-        protected abstract void Execute(object p);
+        protected abstract void Execute(object parameter);
     }
 }

@@ -3,12 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" mc:Ignorable="d" 
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:l="clr-namespace:Bookinist.Views.UserControls"
              xmlns:vm="clr-namespace:Bookinist.ViewModels"
              xmlns:cmp="clr-namespace:System.ComponentModel;assembly=WindowsBase"
              d:DataContext="{d:DesignInstance {x:Type vm:BookViewModel}, IsDesignTimeCreatable=True}"
              d:DesignWidth="800"
              d:DesignHeight="450">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadDataFromRepositoryCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -26,7 +32,13 @@
             <DockPanel>
                 <TextBox DockPanel.Dock="Top" Text="{Binding BookFilterKeyword, 
                     UpdateSourceTrigger=PropertyChanged}"/>
-                <ListBox MinWidth="140" ItemsSource="{Binding BookView}">
+                <UniformGrid DockPanel.Dock="Bottom" Rows="1">
+                    <Button Content="Add" Margin="0,3,3,3" Command="{Binding AddBookCommand}"/>
+                    <Button Content="Remove" Margin="3,3,0,3" Command="{Binding RemoveBookCommand}" 
+                            CommandParameter="{Binding SelectedBook}"/>
+                </UniformGrid>
+                <ListBox MinWidth="140" ItemsSource="{Binding BookView}" 
+                         SelectedItem="{Binding SelectedBook}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}" ToolTip="{Binding Category.Name}"/>

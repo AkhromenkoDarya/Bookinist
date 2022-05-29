@@ -19,6 +19,8 @@ namespace Bookinist
         public static Window FocusedWindow => Current.Windows.Cast<Window>().FirstOrDefault(w =>
             w.IsFocused);
 
+        public static Window CurrentWindow => FocusedWindow ?? ActiveWindow;
+
         private static IHost _host;
 
         public static IHost Host => _host ??= CreateHostBuilder(Environment.GetCommandLineArgs())
