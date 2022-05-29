@@ -6,8 +6,5 @@ namespace Bookinist.ViewModels.Locator
     {
         public MainWindowViewModel MainWindow => App.Services
             .GetRequiredService<MainWindowViewModel>();
-
-        public StatisticsViewModel StatisticsView => App.Services
-            .GetRequiredService<StatisticsViewModel>();
     }
 }

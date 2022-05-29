@@ -4,14 +4,36 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:l="clr-namespace:Bookinist.Views.UserControls"
+             xmlns:vm="clr-namespace:Bookinist.ViewModels"
+             xmlns:cmp="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+             d:DataContext="{d:DesignInstance {x:Type vm:BookViewModel}, IsDesignTimeCreatable=True}"
              d:DesignWidth="800"
              d:DesignHeight="450">
     <Grid>
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" 
-                   FontWeight="Bold" Text="Books">
-            <TextBlock.Effect>
-                <DropShadowEffect ShadowDepth="2"/>
-            </TextBlock.Effect>
-        </TextBlock>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="Books">
+            <!--<GroupBox.Resources>
+                <CollectionViewSource x:Key="BookView" Source="{Binding BookView}">
+                    <CollectionViewSource.SortDescriptions>
+                        <cmp:SortDescription PropertyName="Name"/>
+                        <cmp:SortDescription PropertyName="Category.Name"/>
+                    </CollectionViewSource.SortDescriptions>
+                </CollectionViewSource>
+            </GroupBox.Resources>-->
+            <DockPanel>
+                <TextBox DockPanel.Dock="Top" Text="{Binding BookFilterKeyword, 
+                    UpdateSourceTrigger=PropertyChanged}"/>
+                <ListBox MinWidth="140" ItemsSource="{Binding BookView}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" ToolTip="{Binding Category.Name}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                </ListBox>
+            </DockPanel>
+        </GroupBox>
     </Grid>
 </UserControl>

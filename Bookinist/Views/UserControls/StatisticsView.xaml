@@ -6,8 +6,8 @@
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:l="clr-namespace:Bookinist.Views.UserControls"
              xmlns:vm="clr-namespace:Bookinist.ViewModels"
-             DataContext="{Binding StatisticsView, Source={StaticResource Locator}}"
-             d:DataContext="{d:DesignInstance vm:StatisticsViewModel, IsDesignTimeCreatable=True}"
+             d:DataContext="{d:DesignInstance {x:Type vm:StatisticsViewModel}, 
+                IsDesignTimeCreatable=True}"
              d:DesignWidth="800"
              d:DesignHeight="450">
     <i:Interaction.Triggers>
@@ -15,13 +15,20 @@
             <i:InvokeCommandAction Command="{Binding ComputeStatisticsCommand}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Grid>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock Text="Statistics" FontSize="30" FontWeight="Bold">
-                <TextBlock.Effect>
-                    <DropShadowEffect ShadowDepth="1"/>
-                </TextBlock.Effect>
-            </TextBlock>
-        </StackPanel>
-    </Grid>
+    <TabControl>
+        <TabItem Header="Books">
+            <GroupBox Header="Bestsellers">
+                <DataGrid ItemsSource="{Binding Bestsellers}" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Book" Width="*" Binding="{Binding Book.Name}"/>
+                            <DataGridTextColumn Header="Sale count" Binding="{Binding SaleCount}"/>
+                            <DataGridTextColumn Header="Sum cost" Binding="{Binding SumCost}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+        </TabItem>
+        <TabItem Header="Categories"/>
+        <TabItem Header="Buyers"/>
+        <TabItem Header="Buyers"/>
+    </TabControl>
 </UserControl>

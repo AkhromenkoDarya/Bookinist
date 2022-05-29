@@ -7,5 +7,7 @@ namespace Bookinist.Models
         public Book Book { get; set; }
 
         public int SaleCount { get; set; }
+
+        public decimal SumCost { get; set; }
     }
 }

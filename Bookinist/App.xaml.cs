@@ -11,6 +11,8 @@ namespace Bookinist
 {
     public partial class App
     {
+        public static bool IsDesignMode { get; private set; } = true;
+
         public static Window ActiveWindow => Current.Windows.Cast<Window>().FirstOrDefault(w =>
             w.IsActive);
 
@@ -37,6 +39,7 @@ namespace Bookinist
         protected override async void OnStartup(StartupEventArgs e)
         {
             IHost host = Host;
+            IsDesignMode = false;
 
             using (IServiceScope scope = Services.CreateScope())
             {

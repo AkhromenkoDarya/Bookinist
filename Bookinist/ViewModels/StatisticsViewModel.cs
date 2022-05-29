@@ -59,7 +59,8 @@ namespace Bookinist.ViewModels
                 .Select(deals => new
                 {
                     BookId = deals.Key,
-                    Count = deals.Count()
+                    Count = deals.Count(),
+                    Sum = deals.Sum(d => d.Price)
                 })
                 .OrderByDescending(deal => deal.Count)
                 .Take(5)
@@ -69,15 +70,11 @@ namespace Bookinist.ViewModels
                     (deals, book) => new BestsellerInfo
                     {
                         Book = book,
-                        SaleCount = deals.Count
+                        SaleCount = deals.Count,
+                        SumCost = deals.Sum
                     });
 
-            Bestsellers.Clear();
-
-            foreach (BestsellerInfo bestseller in await bestsellerQuery.ToArrayAsync())
-            {
-                Bestsellers.Add(bestseller);
-            }
+            Bestsellers.AddWithClear(await bestsellerQuery.ToArrayAsync());
         }
 
         #endregion
