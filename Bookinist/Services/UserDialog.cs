@@ -1,9 +1,48 @@
-﻿using Bookinist.Services.Interfaces;
+﻿using Bookinist.DAL.Entities;
+using Bookinist.Services.Interfaces;
+using Bookinist.ViewModels;
+using Bookinist.Views.Windows;
+using System.Windows;
 
 namespace Bookinist.Services
 {
     internal class UserDialog : IUserDialog
     {
+        public bool Edit(Book book)
+        {
+            var bookEditorViewModel = new BookEditorViewModel(book);
 
+            var bookEditorWindow = new BookEditorWindow
+            {
+                DataContext = bookEditorViewModel
+            };
+
+            if (bookEditorWindow.ShowDialog() != true)
+            {
+                return false;
+            }
+
+            book.Name = bookEditorViewModel.Name;
+
+            return true;
+        }
+
+        public bool ConfirmQuestion(string information, string caption)
+        {
+            return MessageBox.Show(information, caption, MessageBoxButton.YesNo, 
+                MessageBoxImage.Question) == MessageBoxResult.Yes;
+        }
+
+        public void ConfirmWarning(string information, string caption)
+        {
+            MessageBox.Show(information, caption, MessageBoxButton.YesNo, 
+                MessageBoxImage.Warning);
+        }
+
+        public void ConfirmError(string information, string caption)
+        {
+            MessageBox.Show(information, caption, MessageBoxButton.OK, 
+                MessageBoxImage.Error);
+        }
     }
 }

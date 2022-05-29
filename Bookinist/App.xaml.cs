@@ -11,11 +11,15 @@ namespace Bookinist
 {
     public partial class App
     {
+        public static bool IsDesignMode { get; private set; } = true;
+
         public static Window ActiveWindow => Current.Windows.Cast<Window>().FirstOrDefault(w =>
             w.IsActive);
 
         public static Window FocusedWindow => Current.Windows.Cast<Window>().FirstOrDefault(w =>
             w.IsFocused);
+
+        public static Window CurrentWindow => FocusedWindow ?? ActiveWindow;
 
         private static IHost _host;
 
@@ -37,6 +41,7 @@ namespace Bookinist
         protected override async void OnStartup(StartupEventArgs e)
         {
             IHost host = Host;
+            IsDesignMode = false;
 
             using (IServiceScope scope = Services.CreateScope())
             {

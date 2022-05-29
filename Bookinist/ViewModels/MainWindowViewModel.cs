@@ -21,6 +21,8 @@ namespace Bookinist.ViewModels
 
         private readonly ISaleService _saleService;
 
+        private readonly IUserDialog _userDialog;
+
         #region Title : string - Заголовок окна
 
         /// <summary>
@@ -104,7 +106,7 @@ namespace Bookinist.ViewModels
         /// </summary>
         private void OnShowBookViewCommandExecuted(object p)
         {
-            CurrentChildViewModel = new BookViewModel(_books);
+            CurrentChildViewModel = new BookViewModel(_books, _userDialog);
         }
 
         #endregion
@@ -174,13 +176,15 @@ namespace Bookinist.ViewModels
         }
 
         public MainWindowViewModel(IRepository<Book> books, IRepository<Seller> sellers, 
-            IRepository<Buyer> buyers, IRepository<Deal> deals, ISaleService saleService)
+            IRepository<Buyer> buyers, IRepository<Deal> deals, ISaleService saleService, 
+            IUserDialog userDialog)
         {
             _books = books;
             _sellers = sellers;
             _buyers = buyers;
             _deals = deals;
             _saleService = saleService;
+            _userDialog = userDialog;
         }
     }
 }

@@ -3,5 +3,6 @@
                     xmlns:cmds="clr-namespace:Bookinist.Infrastructure.Commands">
     
     <cmds:CloseWindow x:Key="CloseWindowCommand"/>
+    <cmds:DialogResultCommand x:Key="DialogResultCommand"/>
     
 </ResourceDictionary>

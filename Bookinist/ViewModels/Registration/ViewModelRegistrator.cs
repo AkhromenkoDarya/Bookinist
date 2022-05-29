@@ -5,7 +5,6 @@ namespace Bookinist.ViewModels.Registration
     internal static class ViewModelRegistrator
     {
         public static IServiceCollection AddViewModels(this IServiceCollection services) => services
-           .AddScoped<MainWindowViewModel>()
-           .AddTransient<StatisticsViewModel>();
+            .AddScoped<MainWindowViewModel>();
     }
 }

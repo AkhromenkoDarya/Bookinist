@@ -54,8 +54,8 @@ namespace Bookinist.Infrastructure.Commands.Base
             }
         }
 
-        protected virtual bool CanExecute(object p) => true;
+        protected virtual bool CanExecute(object parameter) => true;
 
-        protected abstract Task ExecuteAsync(object p);
+        protected abstract Task ExecuteAsync(object parameter);
     }
 }

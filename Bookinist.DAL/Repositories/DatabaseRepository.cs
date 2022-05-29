@@ -106,10 +106,9 @@ namespace Bookinist.DAL.Repositories
 
             //_database.Entry(item).State = EntityState.Deleted;
 
-            _database.Remove(new T
-            {
-                Id = id
-            });
+            T item = _set.Local.FirstOrDefault(i => i.Id == id) ?? new T { Id = id };
+
+            _database.Remove(item);
 
             if (IsAutoSavingEnabled)
             {
