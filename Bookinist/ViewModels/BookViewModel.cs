@@ -20,6 +20,8 @@ namespace Bookinist.ViewModels
     {
         private readonly IRepository<Book> _bookRepository;
 
+        private readonly IRepository<Category> _categoryRepository;
+
         private readonly IUserDialog _userDialog;
 
         #region Books : ObservableCollection<Book> - Коллекция книг
@@ -159,7 +161,7 @@ namespace Bookinist.ViewModels
         {
             var newBook = new Book();
 
-            if (!_userDialog.Edit(newBook))
+            if (!_userDialog.Edit(newBook, _categoryRepository))
             {
                 return;
             }
@@ -214,7 +216,8 @@ namespace Bookinist.ViewModels
 
         #endregion
 
-        public BookViewModel() : this(new DebugBookRepository(), new UserDialog())
+        public BookViewModel(): this(new DebugBookRepository(), new DebugCategoryRepository(), 
+            new UserDialogService())
         {
             if (!App.IsDesignMode)
             {
@@ -225,10 +228,12 @@ namespace Bookinist.ViewModels
             _ = OnLoadDataFromRepositoryCommandExecuted();
         }
 
-        public BookViewModel(IRepository<Book> bookRepository, IUserDialog userDialog)
+        public BookViewModel(IRepository<Book> bookRepository, 
+            IRepository<Category> categoryRepository, IUserDialog userDialog)
         {
             _bookRepository = bookRepository;
             _userDialog = userDialog;
+            _categoryRepository = categoryRepository;
 
             _bookViewSource = new CollectionViewSource
             {

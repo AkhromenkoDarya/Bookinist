@@ -1,4 +1,5 @@
 ﻿using Bookinist.DAL.Entities;
+using Bookinist.Interfaces;
 using Bookinist.Services.Interfaces;
 using Bookinist.ViewModels;
 using Bookinist.Views.Windows;
@@ -8,9 +9,9 @@ namespace Bookinist.Services
 {
     internal class UserDialogService : IUserDialog
     {
-        public bool Edit(Book book)
+        public bool Edit(Book book, IRepository<Category> categoryRepository)
         {
-            var bookEditorViewModel = new BookEditorViewModel(book);
+            var bookEditorViewModel = new BookEditorViewModel(book, categoryRepository);
 
             var bookEditorWindow = new BookEditorWindow
             {

@@ -1,5 +1,4 @@
-﻿using Bookinist.DAL.Context;
-using Bookinist.DAL.Entities;
+﻿using Bookinist.DAL.Entities;
 using Bookinist.Infrastructure.Commands;
 using Bookinist.Interfaces;
 using Bookinist.Services.Interfaces;
@@ -11,6 +10,8 @@ namespace Bookinist.ViewModels
 {
     internal class MainWindowViewModel : ViewModel
     {
+        private readonly IRepository<Category> _categories;
+
         private readonly IRepository<Book> _books;
 
         private readonly IRepository<Seller> _sellers;
@@ -106,7 +107,7 @@ namespace Bookinist.ViewModels
         /// </summary>
         private void OnShowBookViewCommandExecuted(object p)
         {
-            CurrentChildViewModel = new BookViewModel(_books, _userDialog);
+            CurrentChildViewModel = new BookViewModel(_books, _categories, _userDialog);
         }
 
         #endregion
@@ -175,10 +176,11 @@ namespace Bookinist.ViewModels
             
         }
 
-        public MainWindowViewModel(IRepository<Book> books, IRepository<Seller> sellers, 
-            IRepository<Buyer> buyers, IRepository<Deal> deals, ISaleService saleService, 
-            IUserDialog userDialog)
+        public MainWindowViewModel(IRepository<Category> categories, IRepository<Book> books, 
+            IRepository<Seller> sellers, IRepository<Buyer> buyers, IRepository<Deal> deals, 
+            ISaleService saleService, IUserDialog userDialog)
         {
+            _categories = categories;
             _books = books;
             _sellers = sellers;
             _buyers = buyers;
