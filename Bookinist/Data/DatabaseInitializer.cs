@@ -63,15 +63,12 @@ namespace Bookinist.Data
             var timer = Stopwatch.StartNew();
             _logger.LogInformation("Initialization of categories...");
 
-            _categories = new Category[CategoryCount];
-
-            for (var i = 0; i < CategoryCount; i++)
-            {
-                _categories[i] = new Category
+            _categories = Enumerable.Range(1, CategoryCount)
+                .Select(i => new Category
                 {
-                    Name = $"Category {i + 1}"
-                };
-            }
+                    Name = $"Category {i}"
+                })
+                .ToArray();
 
             await _database.Categories.AddRangeAsync(_categories);
             await _database.SaveChangesAsync();

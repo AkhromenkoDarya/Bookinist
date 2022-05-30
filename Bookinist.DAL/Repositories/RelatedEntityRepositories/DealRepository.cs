@@ -1,7 +1,7 @@
-﻿using System.Linq;
-using Bookinist.DAL.Context;
+﻿using Bookinist.DAL.Context;
 using Bookinist.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Bookinist.DAL.Repositories.RelatedEntityRepositories
 {

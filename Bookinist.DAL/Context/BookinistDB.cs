@@ -17,7 +17,7 @@ namespace Bookinist.DAL.Context
 
         public BookinistDb(DbContextOptions<BookinistDb> options) : base(options)
         {
-            
+
         }
     }
 }
