@@ -6,7 +6,7 @@
         xmlns:l="clr-namespace:Bookinist.Views.Windows"
         xmlns:vm="clr-namespace:Bookinist.ViewModels"
         d:DataContext="{d:DesignInstance {x:Type vm:BookEditorViewModel}, IsDesignTimeCreatable=True}"
-        Title="BookEditorWindow" 
+        Title="BookEditorWindow"
         MinWidth="350"
         MinHeight="170"
         Width="350" Height="170">
@@ -14,24 +14,28 @@
         <TextBlock DockPanel.Dock="Top" Margin="0,15,0,10" HorizontalAlignment="Center" 
                    Text="{Binding Id, StringFormat='Book Id: {0}'}"/>
         <UniformGrid DockPanel.Dock="Bottom" Rows="1" HorizontalAlignment="Right">
-            <Button Content="OK" Margin="3" Padding="30,3" FontWeight="Bold" IsDefault="True"
+            <Button Content="OK" Margin="3" Padding="20,3" FontWeight="Bold" IsDefault="True"
                     Command="{StaticResource DialogResultCommand}" CommandParameter="True"/>
-            <Button Content="Cancel" Margin="3,3,0,3" Padding="30,3" IsCancel="True"
+            <Button Content="Cancel" Margin="3,3,10,3" Padding="20,3" IsCancel="True"
                     Command="{StaticResource DialogResultCommand}" CommandParameter="False"/>
         </UniformGrid>
-        <Grid Margin="5">
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="Name:" Margin="3" 
-                       VerticalAlignment="Center"/>
-            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Name}" 
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Name:" VerticalAlignment="Center" 
+                       Margin="3"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Name}" Margin="3,3,10,3"
                      VerticalContentAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Category:" Margin="3"/>
+            <ComboBox Grid.Row="1" Grid.Column="1" IsEditable="False" Margin="3,3,10,3" 
+                      VerticalContentAlignment="Center" ItemsSource="{Binding Categories}" 
+                      SelectedItem="{Binding Category}"/>
         </Grid>
     </DockPanel>
 </Window>

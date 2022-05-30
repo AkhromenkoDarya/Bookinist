@@ -1,5 +1,5 @@
 ﻿using Bookinist.DAL.Context;
-using Bookinist.DAL.Repositories.Services.Registration;
+using Bookinist.DAL.Services.Registration;
 using Bookinist.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

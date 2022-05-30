@@ -1,9 +1,10 @@
 ﻿using Bookinist.DAL.Entities;
+using Bookinist.DAL.Repositories;
 using Bookinist.DAL.Repositories.RelatedEntityRepositories;
 using Bookinist.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Bookinist.DAL.Repositories.Services.Registration
+namespace Bookinist.DAL.Services.Registration
 {
     public static class RepositoryRegistrator
     {

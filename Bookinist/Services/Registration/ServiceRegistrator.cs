@@ -7,7 +7,7 @@ namespace Bookinist.Services.Registration
     {
         public static IServiceCollection AddServices(this IServiceCollection services) => services
             .AddTransient<ISaleService, SaleService>()
-            .AddTransient<IUserDialog, UserDialog>()
+            .AddTransient<IUserDialog, UserDialogService>()
         ;
     }
 }

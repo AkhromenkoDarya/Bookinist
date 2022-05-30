@@ -6,12 +6,20 @@ using System.Threading.Tasks;
 
 namespace Bookinist.Infrastructure.DebugServices
 {
-    internal class DebugBookRepository : IRepository<Book>
+    internal class DebugCategoryRepository : IRepository<Category>
     {
-        public IQueryable<Book> Items { get; }
+        public IQueryable<Category> Items { get; }
 
-        public DebugBookRepository()
+        public DebugCategoryRepository()
         {
+            Category[] categories = Enumerable.Range(1, 100)
+                .Select(i => new Category()
+                {
+                    Id = i,
+                    Name = $"Category {i}"
+                })
+                .ToArray();
+
             Book[] books = Enumerable.Range(1, 100)
                 .Select(i => new Book
                 {
@@ -20,50 +28,42 @@ namespace Bookinist.Infrastructure.DebugServices
                 })
                 .ToArray();
 
-            Category[] categories = Enumerable.Range(1, 100)
-                .Select(i => new Category()
-                {
-                    Id = i,
-                    Name = $"SelectedCategory {i}"
-                })
-                .ToArray();
-
-            foreach (Book book in books)
+            foreach (Category category in categories)
             {
-                Category category = categories[book.Id % categories.Length];
-                category.Books.Add(book);
+                Book book = books[category.Id % books.Length];
                 book.Category = category;
+                category.Books.Add(book);
             }
 
-            Items = books.AsQueryable();
+            Items = categories.AsQueryable();
         }
 
-        public Book Get(int id)
+        public Category Get(int id)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<Book> GetAsync(int id, CancellationToken cancellationToken = default)
+        public Task<Category> GetAsync(int id, CancellationToken cancellationToken = default)
         {
             throw new System.NotImplementedException();
         }
 
-        public Book Add(Book item)
+        public Category Add(Category item)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<Book> AddAsync(Book item, CancellationToken cancellationToken = default)
+        public Task<Category> AddAsync(Category item, CancellationToken cancellationToken = default)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Update(Book item)
+        public void Update(Category item)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task UpdateAsync(Book item, CancellationToken cancellationToken = default)
+        public Task UpdateAsync(Category item, CancellationToken cancellationToken = default)
         {
             throw new System.NotImplementedException();
         }

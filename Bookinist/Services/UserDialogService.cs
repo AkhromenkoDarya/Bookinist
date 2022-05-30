@@ -1,4 +1,5 @@
 ﻿using Bookinist.DAL.Entities;
+using Bookinist.Interfaces;
 using Bookinist.Services.Interfaces;
 using Bookinist.ViewModels;
 using Bookinist.Views.Windows;
@@ -6,11 +7,11 @@ using System.Windows;
 
 namespace Bookinist.Services
 {
-    internal class UserDialog : IUserDialog
+    internal class UserDialogService : IUserDialog
     {
-        public bool Edit(Book book)
+        public bool Edit(Book book, IRepository<Category> categoryRepository)
         {
-            var bookEditorViewModel = new BookEditorViewModel(book);
+            var bookEditorViewModel = new BookEditorViewModel(book, categoryRepository);
 
             var bookEditorWindow = new BookEditorWindow
             {
@@ -23,6 +24,7 @@ namespace Bookinist.Services
             }
 
             book.Name = bookEditorViewModel.Name;
+            book.Category = bookEditorViewModel.Category;
 
             return true;
         }
