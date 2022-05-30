@@ -28,7 +28,7 @@
             </GroupBox>
         </TabItem>
         <TabItem Header="Categories"/>
-        <TabItem Header="Buyers"/>
+        <TabItem Header="Sellers"/>
         <TabItem Header="Buyers"/>
     </TabControl>
 </UserControl>

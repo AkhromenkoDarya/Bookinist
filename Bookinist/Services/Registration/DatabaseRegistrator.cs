@@ -11,36 +11,32 @@ namespace Bookinist.Services.Registration
     internal static class DatabaseRegistrator
     {
         public static IServiceCollection AddDatabase(this IServiceCollection services,
-            IConfiguration configuration) => 
-                services
-                    .AddDbContext<BookinistDb>(options =>
-                    {
-                        string type = configuration["Type"];              
+            IConfiguration configuration)
+        {
+            string provider = configuration.GetValue("Provider", "MSSQL");
 
-                        switch (type)
+            return services.AddDbContext<BookinistDb>(
+                        options => _ = provider switch
                         {
-                            case null:
-                                throw new InvalidOperationException(
-                                    "The database type is not defined");
+                            "MSSQL" => options.UseSqlServer(configuration
+                                    .GetConnectionString("MSSQL"),
+                                x => x.MigrationsAssembly("MSSQLMigrations")),
 
-                            default:
-                                throw new InvalidOperationException(
-                                    $"The \"{type}\" connection type is not supported");
+                            "SQLite" => options.UseSqlite(configuration
+                                    .GetConnectionString("SQLite"),
+                                x => x.MigrationsAssembly("SQLiteMigrations")),
 
-                            case "MSSQL":
-                                options.UseSqlServer(configuration.GetConnectionString(type));
-                                break;
-                            case "SQLite":
-                                options.UseSqlite(configuration.GetConnectionString(type));
-                                break;
-                            case "InMemory":
-                                options.UseInMemoryDatabase("Bookinist.db");
-                                break;
+                            "InMemory" => options.UseInMemoryDatabase("Bookinist.db"),
 
-                        }
-                    })
+                            null => throw new ArgumentNullException(nameof(provider),
+                                "The provider is not defined"),
+
+                            _ => throw new NotSupportedException(
+                                $"Unsupported provider: {provider}")
+                        })
                     .AddTransient<DatabaseInitializer>()
                     .AddRepositoriesInDatabase()
-        ;
+                ;
+        }
     }
 }

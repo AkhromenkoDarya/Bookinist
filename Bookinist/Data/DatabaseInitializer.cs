@@ -66,7 +66,7 @@ namespace Bookinist.Data
             _categories = Enumerable.Range(1, CategoryCount)
                 .Select(i => new Category
                 {
-                    Name = $"SelectedCategory {i}"
+                    Name = $"Category {i}"
                 })
                 .ToArray();
 

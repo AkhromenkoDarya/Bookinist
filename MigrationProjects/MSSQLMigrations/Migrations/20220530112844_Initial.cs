@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Bookinist.DAL.Migrations
+namespace Bookinist.MigrationProjects.MSSQLMigrations
 {
     public partial class Initial : Migration
     {

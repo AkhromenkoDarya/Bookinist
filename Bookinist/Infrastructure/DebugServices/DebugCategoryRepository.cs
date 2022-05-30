@@ -16,7 +16,7 @@ namespace Bookinist.Infrastructure.DebugServices
                 .Select(i => new Category()
                 {
                     Id = i,
-                    Name = $"Category {i}"
+                    Name = $"Test Category {i}"
                 })
                 .ToArray();
 
@@ -24,7 +24,7 @@ namespace Bookinist.Infrastructure.DebugServices
                 .Select(i => new Book
                 {
                     Id = i,
-                    Name = $"Book {i}",
+                    Name = $"Test Book {i}",
                 })
                 .ToArray();
 

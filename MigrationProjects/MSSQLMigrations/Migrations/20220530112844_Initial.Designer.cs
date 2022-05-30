@@ -4,14 +4,16 @@ using Bookinist.DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Bookinist.DAL.Migrations
+namespace Bookinist.MigrationProjects.MSSQLMigrations
 {
     [DbContext(typeof(BookinistDb))]
-    partial class BookinistDbModelSnapshot : ModelSnapshot
+    [Migration("20220530112844_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
