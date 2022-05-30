@@ -11,36 +11,34 @@ namespace Bookinist.Services.Registration
     internal static class DatabaseRegistrator
     {
         public static IServiceCollection AddDatabase(this IServiceCollection services,
-            IConfiguration configuration) => 
-                services
-                    .AddDbContext<BookinistDb>(options =>
+            IConfiguration configuration) => services.AddDbContext<BookinistDb>(options =>
+                {
+                    string type = configuration["Provider"];
+
+                    switch (type)
                     {
-                        string type = configuration["Type"];              
+                        case null:
+                            throw new InvalidOperationException(
+                                "The database type is not defined");
 
-                        switch (type)
-                        {
-                            case null:
-                                throw new InvalidOperationException(
-                                    "The database type is not defined");
+                        default:
+                            throw new InvalidOperationException(
+                                $"The \"{type}\" connection type is not supported");
 
-                            default:
-                                throw new InvalidOperationException(
-                                    $"The \"{type}\" connection type is not supported");
+                        case "MSSQL":
+                            options.UseSqlServer(configuration.GetConnectionString(type));
+                            break;
+                        case "SQLite":
+                            options.UseSqlite(configuration.GetConnectionString(type));
+                            break;
+                        case "InMemory":
+                            options.UseInMemoryDatabase("Bookinist.db");
+                            break;
 
-                            case "MSSQL":
-                                options.UseSqlServer(configuration.GetConnectionString(type));
-                                break;
-                            case "SQLite":
-                                options.UseSqlite(configuration.GetConnectionString(type));
-                                break;
-                            case "InMemory":
-                                options.UseInMemoryDatabase("Bookinist.db");
-                                break;
-
-                        }
-                    })
-                    .AddTransient<DatabaseInitializer>()
-                    .AddRepositoriesInDatabase()
+                    }
+                })
+                .AddTransient<DatabaseInitializer>()
+                .AddRepositoriesInDatabase()
         ;
     }
 }

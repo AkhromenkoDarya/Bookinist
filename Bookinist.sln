@@ -7,7 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookinist", "Bookinist\Book
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookinist.DAL", "Bookinist.DAL\Bookinist.DAL.csproj", "{2B88EEC7-A154-43E6-8E29-3487E8BB3C10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookinist.Interfaces", "Bookinist.Interfaces\Bookinist.Interfaces.csproj", "{4F0CD7C8-B1E9-410F-BB6F-C09861768846}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookinist.Interfaces", "Bookinist.Interfaces\Bookinist.Interfaces.csproj", "{4F0CD7C8-B1E9-410F-BB6F-C09861768846}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MigrationProjects", "MigrationProjects", "{0E3881A7-B220-4E30-ABF7-FC442703331C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSSQLMigrations", "MigrationProjects\MSSQLMigrations\MSSQLMigrations.csproj", "{957FBF18-6EE6-4169-9F00-685471FAEFA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLiteMigrations", "MigrationProjects\SQLiteMigrations\SQLiteMigrations.csproj", "{287AD2D9-2AA1-496F-8091-899C20374610}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InMemoryMigrations", "MigrationProjects\InMemoryMigrations\InMemoryMigrations.csproj", "{5D2D05A7-7407-4CE0-8B82-6A970FBAF0F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +35,26 @@ Global
 		{4F0CD7C8-B1E9-410F-BB6F-C09861768846}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F0CD7C8-B1E9-410F-BB6F-C09861768846}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F0CD7C8-B1E9-410F-BB6F-C09861768846}.Release|Any CPU.Build.0 = Release|Any CPU
+		{957FBF18-6EE6-4169-9F00-685471FAEFA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{957FBF18-6EE6-4169-9F00-685471FAEFA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{957FBF18-6EE6-4169-9F00-685471FAEFA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{957FBF18-6EE6-4169-9F00-685471FAEFA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{287AD2D9-2AA1-496F-8091-899C20374610}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{287AD2D9-2AA1-496F-8091-899C20374610}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{287AD2D9-2AA1-496F-8091-899C20374610}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{287AD2D9-2AA1-496F-8091-899C20374610}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D2D05A7-7407-4CE0-8B82-6A970FBAF0F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D2D05A7-7407-4CE0-8B82-6A970FBAF0F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D2D05A7-7407-4CE0-8B82-6A970FBAF0F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D2D05A7-7407-4CE0-8B82-6A970FBAF0F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{957FBF18-6EE6-4169-9F00-685471FAEFA4} = {0E3881A7-B220-4E30-ABF7-FC442703331C}
+		{287AD2D9-2AA1-496F-8091-899C20374610} = {0E3881A7-B220-4E30-ABF7-FC442703331C}
+		{5D2D05A7-7407-4CE0-8B82-6A970FBAF0F7} = {0E3881A7-B220-4E30-ABF7-FC442703331C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2B31BB38-B1A3-4E40-9496-66C9AD41ECBD}
