@@ -6,7 +6,7 @@ using System.Windows;
 
 namespace Bookinist.Services
 {
-    internal class UserDialog : IUserDialog
+    internal class UserDialogService : IUserDialog
     {
         public bool Edit(Book book)
         {
@@ -23,6 +23,7 @@ namespace Bookinist.Services
             }
 
             book.Name = bookEditorViewModel.Name;
+            book.Category = bookEditorViewModel.Category;
 
             return true;
         }

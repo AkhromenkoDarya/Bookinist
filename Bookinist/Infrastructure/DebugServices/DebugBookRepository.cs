@@ -8,6 +8,8 @@ namespace Bookinist.Infrastructure.DebugServices
 {
     internal class DebugBookRepository : IRepository<Book>
     {
+        public IQueryable<Book> Items { get; }
+
         public DebugBookRepository()
         {
             Book[] books = Enumerable.Range(1, 100)
@@ -35,8 +37,6 @@ namespace Bookinist.Infrastructure.DebugServices
 
             Items = books.AsQueryable();
         }
-
-        public IQueryable<Book> Items { get; }
 
         public Book Get(int id)
         {
