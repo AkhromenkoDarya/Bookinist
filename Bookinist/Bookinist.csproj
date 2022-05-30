@@ -26,6 +26,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Bookinist.DAL\Bookinist.DAL.csproj" />
+    <ProjectReference Include="..\MigrationProjects\MSSQLMigrations\MSSQLMigrations.csproj" />
+    <ProjectReference Include="..\MigrationProjects\SQLiteMigrations\SQLiteMigrations.csproj" />
   </ItemGroup>
 
   <ItemGroup>

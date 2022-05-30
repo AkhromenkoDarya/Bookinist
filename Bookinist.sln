@@ -15,8 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSSQLMigrations", "Migratio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLiteMigrations", "MigrationProjects\SQLiteMigrations\SQLiteMigrations.csproj", "{287AD2D9-2AA1-496F-8091-899C20374610}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InMemoryMigrations", "MigrationProjects\InMemoryMigrations\InMemoryMigrations.csproj", "{5D2D05A7-7407-4CE0-8B82-6A970FBAF0F7}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,10 +41,6 @@ Global
 		{287AD2D9-2AA1-496F-8091-899C20374610}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{287AD2D9-2AA1-496F-8091-899C20374610}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{287AD2D9-2AA1-496F-8091-899C20374610}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5D2D05A7-7407-4CE0-8B82-6A970FBAF0F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5D2D05A7-7407-4CE0-8B82-6A970FBAF0F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5D2D05A7-7407-4CE0-8B82-6A970FBAF0F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5D2D05A7-7407-4CE0-8B82-6A970FBAF0F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,7 +48,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{957FBF18-6EE6-4169-9F00-685471FAEFA4} = {0E3881A7-B220-4E30-ABF7-FC442703331C}
 		{287AD2D9-2AA1-496F-8091-899C20374610} = {0E3881A7-B220-4E30-ABF7-FC442703331C}
-		{5D2D05A7-7407-4CE0-8B82-6A970FBAF0F7} = {0E3881A7-B220-4E30-ABF7-FC442703331C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2B31BB38-B1A3-4E40-9496-66C9AD41ECBD}
