@@ -19,5 +19,12 @@ namespace Bookinist.DAL.Context
         {
 
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Deal>()
+                .Property(d => d.Price)
+                .HasConversion<double>();
+        }
     }
 }
