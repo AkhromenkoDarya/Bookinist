@@ -1,6 +1,6 @@
-﻿using Bookinist.Infrastructure.Commands.Base;
-using System;
+﻿using System;
 using System.Windows;
+using Bookinist.Infrastructure.Commands.Base;
 
 namespace Bookinist.Infrastructure.Commands
 {

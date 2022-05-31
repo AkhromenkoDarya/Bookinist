@@ -1,5 +1,5 @@
-﻿using Bookinist.DAL.Entities.Base;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Bookinist.DAL.Entities.Base;
 
 namespace Bookinist.DAL.Entities
 {

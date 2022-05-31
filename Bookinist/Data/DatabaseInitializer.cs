@@ -1,12 +1,12 @@
-﻿using Bookinist.DAL.Context;
-using Bookinist.DAL.Entities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Bookinist.DAL.Context;
+using Bookinist.DAL.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace Bookinist.Data
 {

@@ -1,10 +1,10 @@
-﻿using Bookinist.DAL.Entities;
+﻿using System;
+using System.Windows.Input;
+using Bookinist.DAL.Entities;
 using Bookinist.Infrastructure.Commands;
 using Bookinist.Interfaces;
 using Bookinist.Services.Interfaces;
 using Bookinist.ViewModels.Base;
-using System;
-using System.Windows.Input;
 
 namespace Bookinist.ViewModels
 {

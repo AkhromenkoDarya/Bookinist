@@ -1,14 +1,14 @@
-﻿using Bookinist.DAL.Entities;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Bookinist.DAL.Entities;
 using Bookinist.Infrastructure.Commands;
 using Bookinist.Interfaces;
 using Bookinist.Models;
 using Bookinist.ViewModels.Base;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace Bookinist.ViewModels
 {

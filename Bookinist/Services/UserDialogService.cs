@@ -1,9 +1,9 @@
-﻿using Bookinist.DAL.Entities;
+﻿using System.Windows;
+using Bookinist.DAL.Entities;
 using Bookinist.Interfaces;
 using Bookinist.Services.Interfaces;
 using Bookinist.ViewModels;
 using Bookinist.Views.Windows;
-using System.Windows;
 
 namespace Bookinist.Services
 {

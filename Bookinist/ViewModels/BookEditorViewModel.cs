@@ -1,10 +1,10 @@
-﻿using Bookinist.DAL.Entities;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Bookinist.DAL.Entities;
 using Bookinist.Infrastructure.DebugServices;
 using Bookinist.Interfaces;
 using Bookinist.ViewModels.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Bookinist.ViewModels
 {

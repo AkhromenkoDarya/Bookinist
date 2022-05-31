@@ -1,5 +1,5 @@
-﻿using Bookinist.DAL.Entities.Base;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Bookinist.DAL.Entities.Base;
 
 namespace Bookinist.DAL.Entities
 {

@@ -1,5 +1,5 @@
-﻿using Bookinist.Infrastructure.Commands.Base;
-using System.Windows;
+﻿using System.Windows;
+using Bookinist.Infrastructure.Commands.Base;
 
 namespace Bookinist.Infrastructure.Commands
 {

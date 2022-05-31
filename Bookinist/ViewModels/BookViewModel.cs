@@ -1,4 +1,11 @@
-﻿using Bookinist.DAL.Entities;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Data;
+using System.Windows.Input;
+using Bookinist.DAL.Entities;
 using Bookinist.Infrastructure.Commands;
 using Bookinist.Infrastructure.DebugServices;
 using Bookinist.Interfaces;
@@ -6,13 +13,6 @@ using Bookinist.Services;
 using Bookinist.Services.Interfaces;
 using Bookinist.ViewModels.Base;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Data;
-using System.Windows.Input;
 
 namespace Bookinist.ViewModels
 {
