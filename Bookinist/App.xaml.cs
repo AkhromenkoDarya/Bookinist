@@ -4,8 +4,10 @@ using Bookinist.ViewModels.Registration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Windows;
+using System.Windows.Markup;
 
 namespace Bookinist
 {
@@ -48,6 +50,11 @@ namespace Bookinist
                 scope.ServiceProvider.GetRequiredService<DatabaseInitializer>().InitializeAsync()
                     .Wait();
             }
+
+            FrameworkElement.LanguageProperty.OverrideMetadata(
+                typeof(FrameworkElement), 
+                new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo
+                    .CurrentCulture.IetfLanguageTag)));
 
             base.OnStartup(e);
             await host.StartAsync();

@@ -20,9 +20,11 @@
             <GroupBox Header="Bestsellers">
                 <DataGrid ItemsSource="{Binding Bestsellers}" IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Book" Width="*" Binding="{Binding Book.Name}"/>
-                            <DataGridTextColumn Header="Sale count" Binding="{Binding SaleCount}"/>
-                            <DataGridTextColumn Header="Sum cost" Binding="{Binding SumCost}"/>
+                        <DataGridTextColumn Header="Book" Width="5*" Binding="{Binding Book.Name}"/>
+                            <DataGridTextColumn Header="Sale count" Width="*" 
+                                                Binding="{Binding SaleCount}"/>
+                            <DataGridTextColumn Header="Sum cost" Width="*" 
+                                                Binding="{Binding SumCost, StringFormat='{}{0:C}'}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </GroupBox>
