@@ -75,7 +75,7 @@ namespace Bookinist.ViewModels
 
             Id = book.Id;
             Name = book.Name;
-            Category = categories.Items.ToArray()[0];
+            Category = book.Category ?? _categories.Items.ToArray()[0];
         }
     }
 }

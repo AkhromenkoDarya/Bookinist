@@ -172,6 +172,49 @@ namespace Bookinist.ViewModels
 
         #endregion
 
+        #region Command EditBookCommand - Команда редактирования книги
+
+        /// <summary>
+        /// Команда редактирования книги.
+        /// </summary>
+        private ICommand _editBookCommand;
+
+        /// <summary>
+        /// Команда редактирования книги.
+        /// </summary>
+        public ICommand EditBookCommand => _editBookCommand ??=
+            new RelayCommand(OnEditBookCommandExecuted, CanEditBookCommandExecute);
+
+        /// <summary>
+        /// Проверка возможности выполнения - Команда редактирования книги.
+        /// </summary>
+        private bool CanEditBookCommandExecute(object p) => p != null || SelectedBook != null;
+
+        /// <summary>
+        /// Логика выполнения - Команда редактирования книги.
+        /// </summary>
+        private void OnEditBookCommandExecuted(object p)
+        {
+            if (!((p ?? SelectedBook) is Book editedBook))
+            {
+                return;
+            }
+
+            int index = _books.IndexOf(editedBook);
+
+            if (!_userDialog.Edit(editedBook, _categoryRepository))
+            {
+                return;
+            }
+
+            _bookRepository.Update(editedBook);
+            _books.RemoveAt(index);
+            _books.Insert(index, editedBook);
+            SelectedBook = editedBook;
+        }
+
+        #endregion
+
         #region Command RemoveBookCommand - Команда удаления указанной книги
 
         /// <summary>

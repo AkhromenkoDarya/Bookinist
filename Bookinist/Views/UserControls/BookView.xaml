@@ -6,7 +6,8 @@
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:l="clr-namespace:Bookinist.Views.UserControls"
              xmlns:vm="clr-namespace:Bookinist.ViewModels"
-             xmlns:cmp="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+             xmlns:fa5="http://schemas.fontawesome.com/icons/"
+             xmlns:entities="clr-namespace:Bookinist.DAL.Entities;assembly=Bookinist.DAL"
              d:DataContext="{d:DesignInstance {x:Type vm:BookViewModel}, IsDesignTimeCreatable=True}"
              d:DesignWidth="800"
              d:DesignHeight="450">
@@ -21,26 +22,35 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <GroupBox Header="Books">
-            <!--<GroupBox.Resources>
-                <CollectionViewSource x:Key="BookView" Source="{Binding BookView}">
-                    <CollectionViewSource.SortDescriptions>
-                        <cmp:SortDescription PropertyName="Name"/>
-                        <cmp:SortDescription PropertyName="Category.Name"/>
-                    </CollectionViewSource.SortDescriptions>
-                </CollectionViewSource>
-            </GroupBox.Resources>-->
             <DockPanel>
                 <TextBox DockPanel.Dock="Top" Text="{Binding BookFilterKeyword, 
                     UpdateSourceTrigger=PropertyChanged}"/>
                 <UniformGrid DockPanel.Dock="Bottom" Rows="1">
-                    <Button Content="Add" Margin="0,3,3,3" Command="{Binding AddBookCommand}"/>
-                    <Button Content="Remove" Margin="3,3,0,3" Command="{Binding RemoveBookCommand}" 
-                            CommandParameter="{Binding SelectedBook}"/>
+                    <Button Margin="0,3,3,3" Padding="10,5" Command="{Binding AddBookCommand}">
+                        <Button.Content>
+                            <fa5:ImageAwesome Icon="Solid_Plus" Height="14" Foreground="Green" 
+                                              ToolTip="Add Book"/>
+                        </Button.Content>
+                    </Button>
+                    <Button Margin="0,3" Padding="10,0" Command="{Binding EditBookCommand}" 
+                            CommandParameter="{Binding SelectedBook}">
+                        <Button.Content>
+                            <fa5:ImageAwesome Icon="Regular_Edit" Height="14" Foreground="Blue"
+                                              ToolTip="Edit Book"/>
+                        </Button.Content>
+                    </Button>
+                    <Button Margin="3,3,0,3" Command="{Binding RemoveBookCommand}" 
+                            CommandParameter="{Binding SelectedBook}">
+                        <Button.Content>
+                            <fa5:ImageAwesome Icon="Solid_Minus" Height="4" Foreground="Red" 
+                                              ToolTip="Remove Book"/>
+                        </Button.Content>
+                    </Button>
                 </UniformGrid>
                 <ListBox MinWidth="140" ItemsSource="{Binding BookView}" 
                          SelectedItem="{Binding SelectedBook}">
                 <ListBox.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate DataType="entities:Book">
                         <TextBlock Text="{Binding Name}" ToolTip="{Binding Category.Name}"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
